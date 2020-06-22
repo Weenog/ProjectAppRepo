@@ -1,6 +1,6 @@
 using System;
 
-namespace ProjectApp.Models
+namespace PortfolioApp.Models
 {
     public class ErrorViewModel
     {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ProjectApp.Models;
+using PortfolioApp.Models;
 
-namespace ProjectApp.Controllers
+namespace PortfolioApp.Controllers
 {
     public class HomeController : Controller
     {
