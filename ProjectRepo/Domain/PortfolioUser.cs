@@ -8,5 +8,6 @@ namespace PortfolioApp.Domain
 {
     public class PortfolioUser : IdentityUser
     {
+        public string Description { get; set; }
     }
 }

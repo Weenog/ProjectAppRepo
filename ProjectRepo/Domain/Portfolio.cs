@@ -16,5 +16,8 @@ namespace PortfolioApp.Domain
         public ICollection<PortfolioTag> PortfolioTags { get; set; }
         public int StatusId { get; set; }
         public Status Status { get; set; }
+        public PortfolioUser PortfolioUser { get; set; }
+        public string PortfolioUserId { get; set; }
+
     }
 }

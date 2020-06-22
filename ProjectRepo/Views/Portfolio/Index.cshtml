@@ -1,0 +1,102 @@
+﻿@model IEnumerable<PortfolioListViewModel>
+
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<PortfolioApp.Domain.PortfolioUser> signInManager
+
+
+
+@if (signInManager.IsSignedIn(User))
+{
+    <a asp-controller="Project" asp-action="Create">Add new project</a>
+}
+
+@{
+    if (Model.Count() == 0)
+    {
+        <br />
+        <strong>There are currently no projects listed.</strong>
+    }
+
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Project
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Completion Date
+                    </th>
+                    <th>
+                        Tags
+                    </th>
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <th> Options </th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PortfolioListViewModel portfolio in Model)
+                {
+                    <tr>
+                        <td class="info">
+                            <a asp-controller="Portfolio" asp-action="Detail" asp-route-id="@portfolio.Id">@portfolio.Title</a>
+                        </td>
+
+                        <td class="info">
+                            @portfolio.Status
+                        </td>
+
+                        <td class="info">
+                            @portfolio.CompletionDate
+                        </td>
+
+                        <td class="info">
+                            @{
+                                if (portfolio.Tags.Count == 0)
+                                {
+                                    <p>No tags</p>
+                                }
+
+                                else
+                                {
+                                    foreach (string tag in portfolio.Tags)
+                                    {
+                                        <p>@tag</p>
+                                    }
+                                }
+                            }
+                        </td>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <td class="feature">
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+
+<style>
+    table, td {
+        border-bottom: 1px solid black;
+    }
+
+    .info {
+        width: 20vw;
+    }
+
+    img {
+        width: 100px;
+    }
+</style>

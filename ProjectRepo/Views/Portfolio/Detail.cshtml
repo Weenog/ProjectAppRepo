@@ -1,0 +1,30 @@
+﻿@model PortfolioDetailViewModel;
+
+<strong>Title</strong>
+<p>@Model.Title</p>
+
+@if (!String.IsNullOrEmpty(Model.PhotoUrl))
+{
+    <strong>Photo</strong>
+    <img src="@Model.PhotoUrl" />
+}
+
+<strong>Description</strong>
+<p>@Model.Description</p>
+
+
+<strong>Completion Date</strong>
+<p>@Model.CompletionDate</p>
+
+
+<strong>Status</strong>
+<p>@Model.Status</p>
+
+
+<strong>Tags</strong>
+@foreach (var tag in Model.Tags)
+{
+    <ul>
+        <li>@tag</li>
+    </ul>
+}
